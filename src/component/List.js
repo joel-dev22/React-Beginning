@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 
-export default class List extends Component {
+export default class List extends PureComponent {
   state = {
+    score: 5,
     data: [
       {
         id: 1,
@@ -16,7 +17,14 @@ export default class List extends Component {
     ],
   };
 
+  incrementScore = () => {
+    this.setState({
+      score: 10,
+    });
+  };
+
   render() {
+    console.log(this.state.score);
     return (
       <div>
         <ul>
@@ -28,6 +36,7 @@ export default class List extends Component {
             );
           })}
         </ul>
+        <button onClick={this.incrementScore}>Click me </button>
       </div>
     );
   }
